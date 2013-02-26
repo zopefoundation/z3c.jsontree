@@ -20,7 +20,6 @@ import os
 import unittest
 import zope.interface
 import zope.component
-from zope.testing import doctest
 from zope.publisher.browser import TestRequest
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.container.interfaces import IReadContainer
@@ -127,7 +126,7 @@ class TestGenericJSONTree(z3c.testing.InterfaceBaseTest):
 
     def setUp(test):
         setup.placefulSetUp(True)
-        
+
         # setup adapters
         setUpAdapters()
         # setup json coverters
@@ -139,7 +138,7 @@ class TestGenericJSONTree(z3c.testing.InterfaceBaseTest):
         zope.component.provideAdapter(tree.LITagProvider, name='li')
 
         # register tree content template
-        treeTemplate = os.path.join(os.path.dirname(browser.__file__), 
+        treeTemplate = os.path.join(os.path.dirname(browser.__file__),
             'tree.pt')
         factory = TemplateFactory(treeTemplate, 'text/html')
         zope.component.provideAdapter(factory, (zope.interface.Interface,
@@ -163,7 +162,7 @@ def setUp(test):
     setUpAdapters()
     # setup json coverters
     z3c.json.testing.setUpJSONConverter()
-    
+
 
 def test_suite():
     return unittest.TestSuite((
